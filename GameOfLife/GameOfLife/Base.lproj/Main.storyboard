@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SPN-OJ-Cgf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Conway's Game Of Life-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainGameViewController" customModule="GameOfLifey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVg-VO-mdo">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8gM-6E-HJQ"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="First" id="IIL-m9-XtD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hIP-HY-47D"/>
+                                    <barButtonItem title="Second" id="EAf-Yw-OAi"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="J5Q-yW-gGe"/>
+                                    <barButtonItem title="Thrid" id="xNI-zm-UdU"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jhP-vE-6YT"/>
+                                    <barButtonItem title="Fourth" id="etp-32-8ns"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OqE-Jn-db4"/>
+                                    <barButtonItem title="Fith" id="kZP-ea-8qC"/>
+                                </items>
+                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="126" translatesAutoresizingMaskIntoConstraints="NO" id="xa6-gS-H0b">
+                                <rect key="frame" x="98" y="723" width="190" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqG-RP-ufN">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-3o-4Y9">
+                                        <rect key="frame" x="156" y="0.0" width="34" height="30"/>
+                                        <state key="normal" title="Paus"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uVg-VO-mdo" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="C9F-HL-53U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xa6-gS-H0b" secondAttribute="trailing" constant="126" id="NUn-Th-q7J"/>
+                            <constraint firstItem="uVg-VO-mdo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dOV-EK-l2S"/>
+                            <constraint firstItem="uVg-VO-mdo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="l1H-E4-gts"/>
+                            <constraint firstItem="xa6-gS-H0b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="mAy-ro-9gs"/>
+                            <constraint firstItem="uVg-VO-mdo" firstAttribute="top" secondItem="xa6-gS-H0b" secondAttribute="bottom" constant="65" id="yYi-HJ-ain"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Conway's Game Of Life" id="srf-Xe-fsr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="828.98550724637687" y="105.80357142857143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hQM-Is-LBG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SPN-OJ-Cgf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="zNo-dW-zSC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zuS-G1-axc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yf8-Lb-pcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="105.80357142857143"/>
         </scene>
     </scenes>
 </document>
+
