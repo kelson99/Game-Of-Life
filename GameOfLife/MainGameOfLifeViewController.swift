@@ -18,6 +18,13 @@ class MainGameOfLifeViewController: UIViewController {
     }
     
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var firstButton: UIBarButtonItem!
+    @IBOutlet weak var secondButton: UIBarButtonItem!
+    @IBOutlet weak var thirdButton: UIBarButtonItem!
+    @IBOutlet weak var fourthButton: UIBarButtonItem!
+    @IBOutlet weak var fithButton: UIBarButtonItem!
+    
+    
     
     // MARK: - Properties
     let controller = GamePlay()
@@ -95,6 +102,22 @@ class MainGameOfLifeViewController: UIViewController {
 
     }
     
+    func disableButtons() {
+        firstButton.isEnabled = false
+        secondButton.isEnabled = false
+        thirdButton.isEnabled = false
+        fourthButton.isEnabled = false
+        fithButton.isEnabled = false
+    }
+    
+    func enableButtons() {
+        firstButton.isEnabled = true
+        secondButton.isEnabled = true
+        thirdButton.isEnabled = true
+        fourthButton.isEnabled = true
+        fithButton.isEnabled = true
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,12 +157,14 @@ class MainGameOfLifeViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        enableButtons()
         if sender.currentTitle == "Stop" {
             sender.setTitle("Start", for: .normal)
             controller.clear()
             timer.invalidate()
             collectionView.reloadData()
         } else {
+            disableButtons()
             timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
                 self.controller.checkCells()
                 self.collectionView.reloadData()
@@ -178,16 +203,11 @@ extension MainGameOfLifeViewController:  UICollectionViewDataSource, UICollectio
             }
         } else {
             if controller.cellsOne[indexPath.item].coordinate.status == .dead {
-                //print(controller.cells[indexPath.item].coordinate.status)
                 cell.backgroundColor = .none
             } else {
-                //print("Coordiante: \(controller.cells[indexPath.item].coordinate) ID: \(controller.cells[indexPath.item].id) Status: \(controller.cells[indexPath.item].coordinate.status)")
                 cell.backgroundColor = .green
             }
         }
-        
-        
-        
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 0.7
         

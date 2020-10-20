@@ -112,9 +112,8 @@ class GamePlay {
     }
         
     func clear() {
-        for cell in cellsOne {
-            cell.coordinate.status = .dead
-        }
+        resetCellsOne()
+        resetCellsTwo()
     }
     
     func assignNeighbors() {

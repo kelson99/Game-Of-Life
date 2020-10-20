@@ -81,7 +81,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Conway's Game Of Life" id="srf-Xe-fsr"/>
                     <connections>
+                        <outlet property="firstButton" destination="IIL-m9-XtD" id="YWo-TY-Ssc"/>
+                        <outlet property="fithButton" destination="kZP-ea-8qC" id="Ksi-Rs-03F"/>
+                        <outlet property="fourthButton" destination="etp-32-8ns" id="ecE-9I-SBD"/>
                         <outlet property="playButton" destination="mqG-RP-ufN" id="R6H-BR-kiR"/>
+                        <outlet property="secondButton" destination="EAf-Yw-OAi" id="ZO4-zb-H7x"/>
+                        <outlet property="thirdButton" destination="xNI-zm-UdU" id="225-Mt-sIt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
