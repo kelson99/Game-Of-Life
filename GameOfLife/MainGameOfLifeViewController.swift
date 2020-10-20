@@ -9,7 +9,17 @@ import UIKit
 
 class MainGameOfLifeViewController: UIViewController {
     
+    enum PresetPattern {
+        case Beehive
+        case Blinker
+        case Toad
+        case Beacon
+        case Glider
+    }
+    
     @IBOutlet weak var playButton: UIButton!
+    
+    // MARK: - Properties
     let controller = GamePlay()
     let columns = 25
     let rows = 25
@@ -17,7 +27,11 @@ class MainGameOfLifeViewController: UIViewController {
     var coordinates: [Cell] = []
     var isRunning: Bool = true
     var timer = Timer()
+    var displaySecondArrayCells = true
+    var firstTime: Bool = true
     
+    
+    // MARK: - Private Functions
     func createCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -40,6 +54,48 @@ class MainGameOfLifeViewController: UIViewController {
         self.view.addSubview(collectionView)
     }
     
+    func setUpPreset(presetSelected: PresetPattern) {
+        switch presetSelected {
+        case .Beehive:
+            controller.cellsOne[29].coordinate.status = .alive
+            controller.cellsOne[55].coordinate.status = .alive
+            controller.cellsOne[56].coordinate.status = .alive
+            controller.cellsOne[32].coordinate.status = .alive
+            controller.cellsOne[6].coordinate.status = .alive
+            controller.cellsOne[5].coordinate.status = .alive
+            
+            controller.cellsOne[263].coordinate.status = .alive
+            controller.cellsOne[262].coordinate.status = .alive
+            controller.cellsOne[236].coordinate.status = .alive
+            controller.cellsOne[239].coordinate.status = .alive
+            controller.cellsOne[213].coordinate.status = .alive
+            controller.cellsOne[212].coordinate.status = .alive
+        
+        case .Beacon:
+            controller.cellsOne[133].coordinate.status = .alive
+            controller.cellsOne[134].coordinate.status = .alive
+            controller.cellsOne[132].coordinate.status = .alive
+            
+            controller.cellsOne[290].coordinate.status = .alive
+            controller.cellsOne[289].coordinate.status = .alive
+            controller.cellsOne[288].coordinate.status = .alive
+            
+            controller.cellsOne[431].coordinate.status = .alive
+            controller.cellsOne[430].coordinate.status = .alive
+            controller.cellsOne[429].coordinate.status = .alive
+            
+            controller.cellsOne[568].coordinate.status = .alive
+            controller.cellsOne[569].coordinate.status = .alive
+            controller.cellsOne[570].coordinate.status = .alive
+            
+        default:
+            fatalError()
+        }
+        collectionView.reloadData()
+
+    }
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,15 +103,37 @@ class MainGameOfLifeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         controller.createCellsInitial()
+        controller.createCellsInitialTwo()
         controller.assignNeighbors()
+        controller.assignNeighborsTwo()
         createCollectionView()
     }
+    
+    // MARK: - Actions
+    @IBAction func firstPresetTapped(_ sender: Any) {
+        // beehive
+        setUpPreset(presetSelected: .Beehive)
+    }
+    
+    @IBAction func secondPresetTapped(_ sender: Any) {
+        setUpPreset(presetSelected: .Blinker)
+    }
+    
+    @IBAction func thridPresetTapped(_ sender: Any) {
+    }
+    
+    @IBAction func fourthPresetTapepd(_ sender: Any) {
+    }
+    
+    @IBAction func fithPresetTapped(_ sender: Any) {
+    }
+
     @IBAction func stopButtonTapped(_ sender: Any) {
-        isRunning = false
+        controller.checkCells()
+        collectionView.reloadData()
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        var ount = 0
         if sender.currentTitle == "Stop" {
             sender.setTitle("Start", for: .normal)
             controller.clear()
@@ -63,22 +141,19 @@ class MainGameOfLifeViewController: UIViewController {
             collectionView.reloadData()
         } else {
             timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
-                
                 self.controller.checkCells()
                 self.collectionView.reloadData()
+                if self.firstTime {
+                    self.firstTime = false
+                } else {
+                    if self.displaySecondArrayCells {
+                        self.displaySecondArrayCells = false
+                    } else {
+                        self.displaySecondArrayCells = true
+                    }
+                }
             })
             sender.setTitle("Stop", for: .normal)
-        }
-    }
-    
-    func doThatTHing() {
-        if playButton.currentTitle == "Stop" {
-            timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
-                
-                self.collectionView.reloadData()
-            })
-        } else {
-            playButton.setTitle("Start", for: .normal)
         }
     }
 }
@@ -86,16 +161,33 @@ class MainGameOfLifeViewController: UIViewController {
 extension MainGameOfLifeViewController:  UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return controller.cells.count
+        if displaySecondArrayCells {
+            return controller.cellsTwo.count
+        } else {
+            return controller.cellsOne.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) // as? GameCollectionViewCell ?? GameCollectionViewCell()
-        if controller.cells[indexPath.item].coordinate.status == .dead {
-            cell.backgroundColor = .none
+        if displaySecondArrayCells {
+            if controller.cellsTwo[indexPath.item].coordinate.status == .dead {
+                cell.backgroundColor = .none
+            } else {
+                cell.backgroundColor = .green
+            }
         } else {
-            cell.backgroundColor = .green
+            if controller.cellsOne[indexPath.item].coordinate.status == .dead {
+                //print(controller.cells[indexPath.item].coordinate.status)
+                cell.backgroundColor = .none
+            } else {
+                //print("Coordiante: \(controller.cells[indexPath.item].coordinate) ID: \(controller.cells[indexPath.item].id) Status: \(controller.cells[indexPath.item].coordinate.status)")
+                cell.backgroundColor = .green
+            }
         }
+        
+        
+        
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 0.7
         
@@ -105,12 +197,11 @@ extension MainGameOfLifeViewController:  UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
         if let cell = collectionView.cellForItem(at: indexPath) {
-            cell.layer.backgroundColor = .none
-            if controller.cells[indexPath.item].coordinate.status == .dead {
-                controller.cells[indexPath.item].coordinate.status = .alive
+            if controller.cellsOne[indexPath.item].coordinate.status == .dead {
+                controller.cellsOne[indexPath.item].coordinate.status = .alive
                 cell.backgroundColor = .green
             } else {
-                controller.cells[indexPath.item].coordinate.status = .dead
+                controller.cellsOne[indexPath.item].coordinate.status = .dead
                 cell.backgroundColor = .none
             }
         }

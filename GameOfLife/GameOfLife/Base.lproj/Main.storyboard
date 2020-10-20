@@ -21,13 +21,29 @@
                                     <constraint firstAttribute="height" constant="44" id="8gM-6E-HJQ"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="First" id="IIL-m9-XtD"/>
+                                    <barButtonItem title="First" id="IIL-m9-XtD">
+                                        <connections>
+                                            <action selector="firstPresetTapped:" destination="BYZ-38-t0r" id="ZHh-bR-tDP"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hIP-HY-47D"/>
-                                    <barButtonItem title="Second" id="EAf-Yw-OAi"/>
+                                    <barButtonItem title="Second" id="EAf-Yw-OAi">
+                                        <connections>
+                                            <action selector="secondPresetTapped:" destination="BYZ-38-t0r" id="r6L-BS-e7o"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J5Q-yW-gGe"/>
-                                    <barButtonItem title="Thrid" id="xNI-zm-UdU"/>
+                                    <barButtonItem title="Thrid" id="xNI-zm-UdU">
+                                        <connections>
+                                            <action selector="thridPresetTapped:" destination="BYZ-38-t0r" id="ofB-pq-Wxv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jhP-vE-6YT"/>
-                                    <barButtonItem title="Fourth" id="etp-32-8ns"/>
+                                    <barButtonItem title="Fourth" id="etp-32-8ns">
+                                        <connections>
+                                            <action selector="fourthPresetTapepd:" destination="BYZ-38-t0r" id="G7x-M7-SJl"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OqE-Jn-db4"/>
                                     <barButtonItem title="Fith" id="kZP-ea-8qC"/>
                                 </items>
