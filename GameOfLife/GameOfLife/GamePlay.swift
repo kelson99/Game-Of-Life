@@ -11,7 +11,7 @@ class GamePlay {
     
     var cellsOne: [Cell] = []
     var cellsTwo: [Cell] = []
-    var useTemp: Bool = true
+    var useSecondCellsArray: Bool = true
     var firstRound = true
     
     
@@ -112,6 +112,8 @@ class GamePlay {
     }
         
     func clear() {
+        useSecondCellsArray = true
+        firstRound = true
         resetCellsOne()
         resetCellsTwo()
     }
@@ -399,109 +401,24 @@ class GamePlay {
         if firstRound {
             firstRound = false
         } else {
-            if useTemp {
+            if useSecondCellsArray {
                 resetCellsTwo()
             } else {
                 resetCellsOne()
             }
         }
         
-        if useTemp {
+        if useSecondCellsArray {
             displayCellsTwo()
         } else {
             displayCellsOne()
         }
         
-        if useTemp {
-            useTemp = false
+        if useSecondCellsArray {
+            useSecondCellsArray = false
         } else {
-            useTemp = true
+            useSecondCellsArray = true
         }
-        
-        
-//        for cell in cellsOne {
-//            if cell.coordinate.status == .dead {
-//                if cell.left?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if cell.right?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if cell.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.left?.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.left?.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.right?.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.right?.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if aliveNeighborCount == 3 {
-////                    cell.coordinate.status = .alive
-//                    cellsTwo[cell.id].coordinate.status = .alive
-//
-//                } else {
-////                    cell.coordinate.status = .dead
-//                    cellsTwo[cell.id].coordinate.status = .dead
-//                }
-//                aliveNeighborCount = 0
-//            }
-//            else {
-//                if cell.left?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if cell.right?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if cell.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.left?.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.left?.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.right?.bottom?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                 if cell.right?.top?.coordinate.status == .alive {
-//                    aliveNeighborCount += 1
-//                }
-//                if aliveNeighborCount == 3 || aliveNeighborCount == 2 {
-////                    cell.coordinate.status = .alive
-//                    if useTemp {
-//                        cellsTwo[cell.id].coordinate.status = .alive
-//                        useTemp = false
-//                    } else {
-//                        cellsTwo[cell.id].coordinate.status = .alive
-//                        useTemp = true
-//                    }
-//                } else {
-////                    cell.coordinate.status = .dead
-//                    if useTemp {
-//                        cellsTwo[cell.id].coordinate.status = .alive
-//                        useTemp = false
-//                    } else {
-//                        cellsTwo[cell.id].coordinate.status = .alive
-//                        useTemp = true
-//                    }
-//                }
-//                aliveNeighborCount = 0
-//            }
-//        }
     }
     
     func resetCellsOne() {

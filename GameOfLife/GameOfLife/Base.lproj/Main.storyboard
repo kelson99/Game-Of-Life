@@ -21,7 +21,7 @@
                                     <constraint firstAttribute="height" constant="44" id="8gM-6E-HJQ"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="First" id="IIL-m9-XtD">
+                                    <barButtonItem title="Random" id="IIL-m9-XtD">
                                         <connections>
                                             <action selector="firstPresetTapped:" destination="BYZ-38-t0r" id="ZHh-bR-tDP"/>
                                         </connections>
@@ -45,7 +45,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OqE-Jn-db4"/>
-                                    <barButtonItem title="Fith" id="kZP-ea-8qC"/>
+                                    <barButtonItem title="Fith" id="kZP-ea-8qC">
+                                        <connections>
+                                            <action selector="fithPresetTapped:" destination="BYZ-38-t0r" id="wnW-hX-5Av"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="126" translatesAutoresizingMaskIntoConstraints="NO" id="xa6-gS-H0b">
