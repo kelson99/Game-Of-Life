@@ -9,12 +9,14 @@ import Foundation
 
 class GamePlay {
     
+    // MARK: - Properties
     var cellsOne: [Cell] = []
     var cellsTwo: [Cell] = []
     var useSecondCellsArray: Bool = true
     var firstRound = true
     
-    
+    /// This method will create the cells for the first cells array and assign them their appropriate positioning value, by assigning a coordinate
+    /// and giving it a boolean value based on its location wether it's on the side, corner etc.
     func createCellsInitial() {
         var id = -1
         var is_row_start = false
@@ -56,13 +58,14 @@ class GamePlay {
                 else {
                     cellsOne.append(Cell(coordinate: Coordinate(x: one, y: two, status: .dead), id: id, isSide: false, isRight: false, isTop: false, isBottom: false, isCorner: false))
                 }
-                
                 is_row_end = false
                 is_row_start = false
             }
         }
     }
     
+    /// This method will create the cells for the second cells array and assign them their appropriate positioning value, by assigning a coordinate
+    /// and giving it a boolean value based on its location wether it's on the side, corner etc.
     func createCellsInitialTwo() {
         var id = -1
         var is_row_start = false
@@ -110,7 +113,8 @@ class GamePlay {
             }
         }
     }
-        
+    
+    /// This function will clear and reset the necessary properties and arrays in order for the simulation to continue on correctly.
     func clear() {
         useSecondCellsArray = true
         firstRound = true
@@ -118,6 +122,8 @@ class GamePlay {
         resetCellsTwo()
     }
     
+    
+    /// This function will assign neighbors (aka the surroding cells of each cell) by checking the cell's location and using it's index will locate the appropriate cell and assign as a neighbor (for cellsOne)
     func assignNeighbors() {
         for cell in cellsOne {
             if cell.isCorner {
@@ -186,6 +192,7 @@ class GamePlay {
         }
     }
     
+    /// This function will assign neighbors (aka the surroding cells of each cell) by checking the cell's location and using it's index will locate the appropriate cell and assign as a neighbor (for cellsTwo)
     func assignNeighborsTwo() {
         for cell in cellsTwo {
             if cell.isCorner {
@@ -254,6 +261,7 @@ class GamePlay {
         }
     }
     
+    /// This function will be used to iterate through the cells in the cellsOne array and determining the next graph simulation to show to the user by storing the information and modifying the cellsTwo array.
     func displayCellsOne () {
         var aliveNeighborCount = 0
         for cell in cellsTwo {
@@ -325,6 +333,7 @@ class GamePlay {
         }
     }
     
+    /// This function will be used to iterate through the cells in the cellsTwo array and determining the next graph simulation to show to the user by storing the information and modifying the cellsOne array.
     func displayCellsTwo () {
         var aliveNeighborCount = 0
         for cell in cellsOne {
@@ -396,8 +405,8 @@ class GamePlay {
         }
     }
     
+    /// This function will check the necessary properties for every time the cells are checked and mofify as necessary.
     func checkCells() {
-//        If the cell is alive and has 2 or 3 neighbors, then it remains alive. Else it dies.
         if firstRound {
             firstRound = false
         } else {
@@ -421,12 +430,14 @@ class GamePlay {
         }
     }
     
+    /// Resets the cells one array by looping through and changing each cell property to dead
     func resetCellsOne() {
         for cell in cellsOne {
             cell.coordinate.status = .dead
         }
     }
     
+    /// Resets the cells two array by looping through and changing each cell property to dead
     func resetCellsTwo() {
         for cell in cellsTwo {
             cell.coordinate.status = .dead

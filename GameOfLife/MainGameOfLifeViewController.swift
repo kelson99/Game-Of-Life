@@ -9,6 +9,7 @@ import UIKit
 
 class MainGameOfLifeViewController: UIViewController {
     
+    // MARK: - Enums
     enum PresetPattern {
         case Beehive
         case Blinker
@@ -19,6 +20,7 @@ class MainGameOfLifeViewController: UIViewController {
         case SpaceShip
     }
     
+    // MARK: - Outlets
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var firstButton: UIBarButtonItem!
     @IBOutlet weak var secondButton: UIBarButtonItem!
@@ -27,7 +29,6 @@ class MainGameOfLifeViewController: UIViewController {
     @IBOutlet weak var fithButton: UIBarButtonItem!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var iterationsLabel: UILabel!
-    
     
     
     // MARK: - Properties
@@ -43,7 +44,7 @@ class MainGameOfLifeViewController: UIViewController {
     
     
     // MARK: - Private Functions
-    func createCollectionView() {
+    private func createCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         let rectangle = CGRect(x: 30, y: 300, width: 350, height: 350)
@@ -65,7 +66,7 @@ class MainGameOfLifeViewController: UIViewController {
         self.view.addSubview(collectionView)
     }
     
-    func reloadCollectionToViewPreset() {
+    private func reloadCollectionToViewPreset() {
         defer {displaySecondArrayCells = true}
         displaySecondArrayCells = false
         DispatchQueue.main.async {
@@ -73,7 +74,7 @@ class MainGameOfLifeViewController: UIViewController {
         }
     }
     
-    func disableButtons() {
+    private func disableButtons() {
         firstButton.isEnabled = false
         secondButton.isEnabled = false
         thirdButton.isEnabled = false
@@ -82,7 +83,7 @@ class MainGameOfLifeViewController: UIViewController {
         nextButton.isEnabled = false
     }
     
-    func enableButtons() {
+    private func enableButtons() {
         firstButton.isEnabled = true
         secondButton.isEnabled = true
         thirdButton.isEnabled = true
@@ -91,7 +92,7 @@ class MainGameOfLifeViewController: UIViewController {
         nextButton.isEnabled = true
     }
     
-    func reset() {
+    private func reset() {
         iterationsCount = 0
         self.iterationsLabel.text = "Iterations# 0"
         self.displaySecondArrayCells = true
@@ -181,9 +182,9 @@ class MainGameOfLifeViewController: UIViewController {
     @IBAction func infoButtonTapped(_ sender: Any) {
         
     }
-    
 }
 
+// MARK: - Extensions
 extension MainGameOfLifeViewController:  UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
