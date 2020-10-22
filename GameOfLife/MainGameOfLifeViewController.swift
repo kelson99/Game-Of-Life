@@ -25,6 +25,8 @@ class MainGameOfLifeViewController: UIViewController {
     @IBOutlet weak var thirdButton: UIBarButtonItem!
     @IBOutlet weak var fourthButton: UIBarButtonItem!
     @IBOutlet weak var fithButton: UIBarButtonItem!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var iterationsLabel: UILabel!
     
     
     
@@ -37,6 +39,7 @@ class MainGameOfLifeViewController: UIViewController {
     var timer = Timer()
     var displaySecondArrayCells = true
     var firstTime: Bool = true
+    var iterationsCount = 0
     
     
     // MARK: - Private Functions
@@ -62,12 +65,21 @@ class MainGameOfLifeViewController: UIViewController {
         self.view.addSubview(collectionView)
     }
     
+    func reloadCollectionToViewPreset() {
+        defer {displaySecondArrayCells = true}
+        displaySecondArrayCells = false
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     func disableButtons() {
         firstButton.isEnabled = false
         secondButton.isEnabled = false
         thirdButton.isEnabled = false
         fourthButton.isEnabled = false
         fithButton.isEnabled = false
+        nextButton.isEnabled = false
     }
     
     func enableButtons() {
@@ -76,9 +88,12 @@ class MainGameOfLifeViewController: UIViewController {
         thirdButton.isEnabled = true
         fourthButton.isEnabled = true
         fithButton.isEnabled = true
+        nextButton.isEnabled = true
     }
     
     func reset() {
+        iterationsCount = 0
+        self.iterationsLabel.text = "Iterations# 0"
         self.displaySecondArrayCells = true
         controller.clear()
         timer.invalidate()
@@ -124,8 +139,15 @@ class MainGameOfLifeViewController: UIViewController {
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
+        self.iterationsCount += 1
+        self.iterationsLabel.text = "Iterations# \(self.iterationsCount)"
         controller.checkCells()
         collectionView.reloadData()
+        if self.displaySecondArrayCells {
+            self.displaySecondArrayCells = false
+        } else {
+            self.displaySecondArrayCells = true
+        }
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
@@ -138,6 +160,8 @@ class MainGameOfLifeViewController: UIViewController {
         } else {
             disableButtons()
             timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
+                self.iterationsCount += 1
+                self.iterationsLabel.text = "Iterations# \(self.iterationsCount)"
                 self.controller.checkCells()
                 self.collectionView.reloadData()
                 if self.displaySecondArrayCells {
@@ -149,6 +173,15 @@ class MainGameOfLifeViewController: UIViewController {
             sender.setTitle("Stop", for: .normal)
         }
     }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        reset()
+    }
+    
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        
+    }
+    
 }
 
 extension MainGameOfLifeViewController:  UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -331,5 +364,6 @@ extension MainGameOfLifeViewController {
         default:
             fatalError()
         }
+        reloadCollectionToViewPreset()
     }
 }

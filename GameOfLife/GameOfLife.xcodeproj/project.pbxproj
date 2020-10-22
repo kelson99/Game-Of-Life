@@ -16,6 +16,7 @@
 		50D540A82538D507002D9004 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D540A72538D507002D9004 /* GamePlay.swift */; };
 		50D540AB2538D534002D9004 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D540AA2538D534002D9004 /* Cell.swift */; };
 		50D540AE2538D53D002D9004 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D540AD2538D53D002D9004 /* Coordinate.swift */; };
+		50D540B12541EF6B002D9004 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D540B02541EF6B002D9004 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		50D540A72538D507002D9004 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
 		50D540AA2538D534002D9004 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		50D540AD2538D53D002D9004 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		50D540B02541EF6B002D9004 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				50D540A72538D507002D9004 /* GamePlay.swift */,
 				50D540AA2538D534002D9004 /* Cell.swift */,
 				50D540AD2538D53D002D9004 /* Coordinate.swift */,
+				50D540B02541EF6B002D9004 /* InfoViewController.swift */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				50D5408F2538C17E002D9004 /* AppDelegate.swift in Sources */,
 				50D540A82538D507002D9004 /* GamePlay.swift in Sources */,
 				50D540AB2538D534002D9004 /* Cell.swift in Sources */,
+				50D540B12541EF6B002D9004 /* InfoViewController.swift in Sources */,
 				50D540A52538D131002D9004 /* MainGameOfLifeViewController.swift in Sources */,
 				50D540912538C17E002D9004 /* SceneDelegate.swift in Sources */,
 				50D540AE2538D53D002D9004 /* Coordinate.swift in Sources */,
