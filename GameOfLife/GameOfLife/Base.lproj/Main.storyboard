@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SPN-OJ-Cgf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,14 +71,18 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqG-RP-ufN">
                                         <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
-                                        <state key="normal" title="Start"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NY0-ZK-P4k"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-3o-4Y9">
                                         <rect key="frame" x="134" y="0.0" width="62" height="30"/>
-                                        <state key="normal" title="Next" image="forward_24px"/>
+                                        <state key="normal" title="Next" image="forward_24px">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XhH-y7-bLV"/>
                                         </connections>
@@ -87,7 +91,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
                             <constraint firstItem="uVg-VO-mdo" firstAttribute="centerX" secondItem="xa6-gS-H0b" secondAttribute="centerX" id="4b7-Gb-OFH"/>
                             <constraint firstItem="uVg-VO-mdo" firstAttribute="centerX" secondItem="mc0-cA-INd" secondAttribute="centerX" id="4tt-86-HN2"/>
@@ -101,11 +105,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Conway's Game Of Life" id="srf-Xe-fsr">
                         <barButtonItem key="leftBarButtonItem" title="Clear" id="AWR-uk-fV2">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="clearButtonTapped:" destination="BYZ-38-t0r" id="MNi-a5-68X"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="1M4-8t-GLb">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="infoButtonTapped:" destination="BYZ-38-t0r" id="exC-Uk-yxG"/>
                                 <segue destination="9AP-n4-C11" kind="show" id="gNl-S0-DcE"/>
@@ -166,7 +172,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8QG-iM-4A5">
                                 <rect key="frame" x="8" y="393" width="398" height="456"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">- The game of life rules examine each cell of the grid.                                                                        - It checks each neighbor (up, down, left, right, and diagonals.                              - If the cell is already alive and has 2 or 3 neighbors that are alive then it remains alive.                                                    - If the cell is dead and has exactly 3 neighbors that are alive then it remains alive.                                                  - In this version the cells wrap around the sides of the grid allowing objects to continue.</mutableString>
+                                <string key="text">- The game of life rules examine each cell of the grid.                                                                        - It checks each neighbor (up, down, left, right, and diagonals.                              - If the cell is already alive and has 2 or 3 neighbors that are alive then it remains alive.                                                    - If the cell is dead and has exactly 3 neighbors that are alive then it remains alive.                                                  - In this version the cells wrap around the sides of the grid allowing objects to continue.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -242,6 +248,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
