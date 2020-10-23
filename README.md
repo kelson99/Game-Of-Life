@@ -3,9 +3,9 @@
 
 ![GameOfLifeGif](https://user-images.githubusercontent.com/59428583/97030480-10cbee80-151c-11eb-8bd0-3d81a574ae9d.gif)
 
-Conways Game of life is a cellular automaton. Invented by John Horton Conway, it's evolution is determined by it's initial state. 
+<h1>Conways Game of life is a cellular automaton. Invented by John Horton Conway, it's evolution is determined by it's initial state.</h1>
 
-<h1>The Rules</h1>
+<h2>The Rules</h2>
 
 1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
 2. Any live cell with two or three live neighbours lives on to the next generation.
